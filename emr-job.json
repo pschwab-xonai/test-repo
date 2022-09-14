@@ -31,7 +31,7 @@
     ],
     "monitoringConfiguration": {
       "s3MonitoringConfiguration": {
-        "logUri": "s3://$VIRTUAL_ID/elasticmapreduce/emr-containers"
+        "logUri": "s3://$S3_BUCKET/elasticmapreduce/emr-containers"
       }
     }
   }
