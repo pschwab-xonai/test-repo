@@ -22,7 +22,7 @@
         "classification": "spark-defaults",
         "properties": {
           "spark.kubernetes.container.image": "$EMR_IMAGE_URI",
-          "spark.kubernetes.driver.podTemplateFile": "s3:///$S3_BUCKET/driver_template.yaml",
+          "spark.kubernetes.driver.podTemplateFile": "s3://$S3_BUCKET/driver_template.yaml",
           "spark.kubernetes.executor.podTemplateFile": "s3://$S3_BUCKET/exec_template.yaml",
           "spark.dynamicAllocation.enabled": "false",
           "spark.local.dir": "/local/scratch"
