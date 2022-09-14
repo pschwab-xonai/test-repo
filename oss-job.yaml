@@ -77,8 +77,8 @@ spec:
             --conf spark.kubernetes.namespace=oss \
             --conf spark.kubernetes.driver.label.spark/component=driver \
             --conf spark.kubernetes.executor.label.spark/component=executor \
-            --conf spark.kubernetes.driver.podTemplateFile='/opt/spark/conf/driver_pod_template.yml' \
-            --conf spark.kubernetes.executor.podTemplateFile='/opt/spark/conf/executor_pod_template.yml' \
+            --conf spark.kubernetes.driver.podTemplateFile='/opt/spark/conf/driver_pod_template.yaml' \
+            --conf spark.kubernetes.executor.podTemplateFile='/opt/spark/conf/executor_pod_template.yaml' \
             --conf spark.kubernetes.driver.volumes.hostPath.spark-local-dir-1.mount.path='/local/scratch' \
             --conf spark.kubernetes.driver.volumes.hostPath.spark-local-dir-1.options.path='/local/scratch' \
             --conf spark.kubernetes.executor.volumes.hostPath.spark-local-dir-1.mount.path='/local/scratch' \
@@ -96,10 +96,10 @@ spec:
           ]
           volumeMounts:
             - name: template-volume
-              mountPath: /opt/spark/conf/driver_pod_template.yml
+              mountPath: /opt/spark/conf/driver_pod_template.yaml
               subPath: driver
             - name: template-volume
-              mountPath: /opt/spark/conf/executor_pod_template.yml
+              mountPath: /opt/spark/conf/executor_pod_template.yaml
               subPath: executor
       serviceAccountName: oss-sa
       restartPolicy: Never
