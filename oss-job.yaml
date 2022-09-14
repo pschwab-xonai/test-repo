@@ -48,7 +48,7 @@ data:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: eks-job
+  name: oss-tpch-eks
   namespace: oss
 spec:
   template:

@@ -1,0 +1,38 @@
+{
+  "virtualClusterId": "$VIRTUAL_ID",
+  "name": "emr-tpch-eks",
+  "executionRoleArn": "arn:aws:iam::$ACCOUNT_ID:role/emr-test-role",
+  "releaseLabel": "emr-6.5.0-latest",
+  "jobDriver": {
+    "sparkSubmitJobDriver": {
+      "entryPoint": "s3://$S3_BUCKET/bootstrapping/cloudbench-assembly-1.0.jar",
+      "entryPointArguments": [
+        "s3://$S3_BUCKET/tpch100_double",
+        "s3://$S3_BUCKET/eks_results/emr_100",
+        "/opt/tpch-dbgen",
+        "100",
+        "1"
+      ],
+      "sparkSubmitParameters": "--class com.xonai.RunMainTPC --conf spark.driver.memory=4G --conf spark.executor.cores=3 --conf spark.executor.memory=10G --conf spark.executor.instances=4 --conf spark.sql.shuffle.partitions=250"
+    }
+  },
+  "configurationOverrides": {
+    "applicationConfiguration": [
+      {
+        "classification": "spark-defaults",
+        "properties": {
+          "spark.kubernetes.container.image": "$EMR_IMAGE_URI",
+          "spark.kubernetes.driver.podTemplateFile": "s3:///$S3_BUCKET/driver_template.yaml",
+          "spark.kubernetes.executor.podTemplateFile": "s3://$S3_BUCKET/exec_template.yaml",
+          "spark.dynamicAllocation.enabled": "false",
+          "spark.local.dir": "/local/scratch"
+        }
+      }
+    ],
+    "monitoringConfiguration": {
+      "s3MonitoringConfiguration": {
+        "logUri": "s3://$VIRTUAL_ID/elasticmapreduce/emr-containers"
+      }
+    }
+  }
+}
