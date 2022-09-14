@@ -14,7 +14,7 @@ subjects:
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: eks-configmap
+  name: template-map
   namespace: oss
 data:
   driver: |-
@@ -54,7 +54,7 @@ spec:
   template:
     spec:
       containers:
-        - name: spark-container
+        - name: job-container
           image: $OSS_IMAGE_URI
           args: [
             "/bin/sh",
@@ -106,6 +106,6 @@ spec:
       volumes:
         - name: template-volume
           configMap:
-            name: eks-configmap
+            name: template-map
             defaultMode: 420
   backoffLimit: 4
