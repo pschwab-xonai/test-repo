@@ -48,7 +48,7 @@ data:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: oss-tpch-eks
+  name: oss-tpch-job
   namespace: oss
 spec:
   template:
@@ -62,7 +62,7 @@ spec:
             "/opt/spark/bin/spark-submit \
             --master k8s://https://kubernetes.default.svc.cluster.local:443 \
             --deploy-mode cluster \
-            --name tpch-oss-eks \
+            --name oss-tpch-spark \
             --class com.xonai.RunMainTPC \
             --conf spark.dynamicAllocation.enabled=false \
             --conf spark.driver.memory=4G \
