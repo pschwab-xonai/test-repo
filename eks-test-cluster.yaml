@@ -4,7 +4,7 @@ kind: ClusterConfig
 metadata:
  name: eks-test-cluster
  region: us-east-1 # ToDo: Modify
- version: "1.22"
+ version: "1.23"
 availabilityZones: [ "us-east-1a", "us-east-1d" ] # ToDo: Modify
 vpc:
  nat:
