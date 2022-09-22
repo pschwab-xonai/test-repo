@@ -4,27 +4,27 @@
     {
       "Effect": "Allow",
       "Action": [
-        "s3:PutObject",
         "s3:GetObject",
+        "s3:ListBucket",
+        "s3:PutObject",
         "s3:DeleteObject",
         "s3:AbortMultipartUpload",
         "s3:ListMultipartUploadParts",
-        "s3:listBucketMultipartUploads",
-        "s3:ListBucket"
+        "s3:ListBucketMultipartUploads"
       ],
       "Resource": [
-        "arn:aws:s3:::$S3_BUCKET",
-        "arn:aws:s3:::$S3_BUCKET/*"
+        "arn:aws:s3:::$S3_TEST_BUCKET",
+        "arn:aws:s3:::$S3_TEST_BUCKET/*"
       ]
     },
     {
       "Effect": "Allow",
       "Action": [
-        "logs:PutLogEvents",
-        "logs:CreateLogStream",
         "logs:DescribeLogGroups",
         "logs:DescribeLogStreams",
-        "logs:CreateLogGroup"
+        "logs:CreateLogStream",
+        "logs:CreateLogGroup",
+        "logs:PutLogEvents"
       ],
       "Resource": [
         "arn:aws:logs:*:*:*"
