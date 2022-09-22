@@ -87,9 +87,9 @@ spec:
             --conf spark.hadoop.fs.s3a.aws.credentials.provider=com.amazonaws.auth.WebIdentityTokenCredentialsProvider \
             --conf spark.kubernetes.authenticate.submission.caCertFile=/var/run/secrets/kubernetes.io/serviceaccount/ca.crt \
             --conf spark.kubernetes.authenticate.submission.oauthTokenFile=/var/run/secrets/kubernetes.io/serviceaccount/token \
-            s3a://$S3_BUCKET/bootstrapping/cloudbench-assembly-1.0.jar \
-            \"s3a://$S3_BUCKET/tpch100_double\" \
-            \"s3a://$S3_BUCKET/eks_results/oss_100\" \
+            s3a://$S3_TEST_BUCKET/bootstrapping/cloudbench-assembly-1.0.jar \
+            \"s3a://$S3_TEST_BUCKET/tpch100_double\" \
+            \"s3a://$S3_TEST_BUCKET/eks_results/oss_100\" \
             \"/opt/tpch-dbgen\" \
             \"100\"
             \"1\""
